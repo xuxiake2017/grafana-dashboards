@@ -24,7 +24,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 4,
+  "iteration": 1658819528409,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -44,7 +45,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -85,7 +86,7 @@
           "calcs": [
             "sum"
           ],
-          "fields": "",
+          "fields": "/^用户数$/",
           "values": false
         },
         "text": {},
@@ -96,7 +97,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -110,7 +111,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(reg_time,$__interval),\n  count(id)\nFROM x_user\nWHERE\n  $__timeFilter(reg_time)\nGROUP BY 1\nORDER BY $__timeGroup(reg_time,$__interval)",
+          "rawSql": "SELECT\n  $__timeGroupAlias(reg_time,$__interval),\n  count(id) AS \"用户数\"\nFROM x_user\nWHERE\n  $__timeFilter(reg_time)\nGROUP BY 1\nORDER BY $__timeGroup(reg_time,$__interval)",
           "refId": "A",
           "select": [
             [
@@ -125,6 +126,12 @@
                   "count"
                 ],
                 "type": "aggregate"
+              },
+              {
+                "params": [
+                  "用户数"
+                ],
+                "type": "alias"
               }
             ]
           ],
@@ -147,7 +154,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -194,7 +201,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -250,7 +257,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -296,7 +303,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -352,7 +359,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -399,7 +406,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "table",
           "group": [],
@@ -429,7 +436,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -475,7 +482,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "table",
           "group": [],
@@ -505,7 +512,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -543,7 +550,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "",
+          "fields": "/^上传数量$/",
           "values": false
         },
         "textMode": "auto"
@@ -553,7 +560,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -567,7 +574,7 @@
           ],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  $__timeGroupAlias(create_time,$__interval),\n  count(id) AS \"id\"\nFROM x_user_file\nWHERE\n  $__timeFilter(create_time)\nGROUP BY 1\nORDER BY $__timeGroup(create_time,$__interval)",
+          "rawSql": "SELECT\n  $__timeGroupAlias(create_time,$__interval),\n  count(id) AS \"上传数量\"\nFROM x_user_file\nWHERE\n  $__timeFilter(create_time)\nGROUP BY 1\nORDER BY $__timeGroup(create_time,$__interval)",
           "refId": "A",
           "select": [
             [
@@ -585,7 +592,7 @@
               },
               {
                 "params": [
-                  "id"
+                  "上传数量"
                 ],
                 "type": "alias"
               }
@@ -610,7 +617,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -657,7 +664,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -713,7 +720,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -758,7 +765,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -814,7 +821,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -860,7 +867,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "table",
           "group": [],
@@ -890,7 +897,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -936,7 +943,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "table",
           "group": [],
@@ -979,7 +986,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -1050,7 +1057,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -1116,7 +1123,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "description": "",
       "fieldConfig": {
@@ -1192,7 +1199,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -1249,7 +1256,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -1320,7 +1327,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -1376,7 +1383,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -1446,7 +1453,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "time_series",
           "group": [
@@ -1525,7 +1532,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "g59dRtg4k"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -1539,8 +1546,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1716,7 +1722,7 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "g59dRtg4k"
+            "uid": "$datasource"
           },
           "format": "table",
           "group": [],
@@ -1764,7 +1770,25 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "MySQL",
+          "value": "MySQL"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "mysql",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-30d",
@@ -1787,6 +1811,6 @@
   "timezone": "",
   "title": "网盘统计",
   "uid": "xV8hOpR4k",
-  "version": 15,
+  "version": 3,
   "weekStart": ""
 }
