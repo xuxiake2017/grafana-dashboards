@@ -25,7 +25,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 4,
-  "iteration": 1658819528409,
+  "iteration": 1659951154733,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -548,7 +548,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "sum"
           ],
           "fields": "/^上传数量$/",
           "values": false
@@ -1130,7 +1130,7 @@
         "defaults": {
           "color": {
             "fixedColor": "red",
-            "mode": "continuous-RdYlGr",
+            "mode": "fixed",
             "seriesBy": "last"
           },
           "custom": {
@@ -1169,7 +1169,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
+                "color": "red",
                 "value": null
               }
             ]
@@ -1546,7 +1546,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           }
@@ -1763,6 +1764,107 @@
       "timeFrom": "7d",
       "title": "上传明细",
       "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avatar"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "image"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 12,
+        "x": 12,
+        "y": 29
+      },
+      "id": 38,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "${datasource}"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  x_user.id,\n  x_user.username,\n  x_user.nick_name,\n  x_user.avatar,\n  date_format(x_user.reg_time, '%Y-%m-%d %H:%i:%s') as reg_time\nFROM\n  x_user x_user\nWHERE\n  (x_user.user_status = 0 OR x_user.user_status = 2)\n  AND $__timeFilter(x_user.reg_time)\nORDER BY x_user.reg_time DESC",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "id"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "x_file_media",
+          "timeColumn": "shoot_time",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": "7d",
+      "title": "用户注册明细",
+      "type": "table"
     }
   ],
   "refresh": "",
@@ -1811,6 +1913,6 @@
   "timezone": "",
   "title": "网盘统计",
   "uid": "xV8hOpR4k",
-  "version": 3,
+  "version": 9,
   "weekStart": ""
 }
